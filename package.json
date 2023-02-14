@@ -1,0 +1,33 @@
+{
+  "name": "wechat_offiaccount",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "type": "module",
+  "license": "MIT",
+  "lint-staged": {
+    "*.{js,jsx,cjs,mjs}": "eslint --cache --fix"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.4.2",
+    "@commitlint/config-conventional": "^17.4.2",
+    "eslint": "^8.33.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.1"
+  },
+  "scripts": {
+    "token": "node build/token",
+    "prepare": "husky install",
+    "lint": "eslint . --ext .js,.jsx,.cjs,.mjs --fix"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@koa/router": "^12.0.0",
+    "chatgpt": "^4.3.2",
+    "koa": "^2.14.1",
+    "koa-bodyparser": "^4.3.0",
+    "log4js": "^6.7.1",
+    "xml2js": "^0.4.23"
+  }
+}
