@@ -48,3 +48,7 @@ docker run -d --name wechat_offiaccount_chatGPT -p 3000:3000 -v "$HOME/dockerdat
 ## 截图
 
 ![01.png](./screenshots/01.png)
+
+可直接扫码关注体验
+
+![02.jpeg](./screenshots/02.jpeg)
