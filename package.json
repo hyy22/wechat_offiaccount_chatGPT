@@ -15,7 +15,7 @@
     "lint-staged": "^13.1.1"
   },
   "scripts": {
-    "token": "node build/token",
+    "token": "node scripts/token",
     "prepare": "husky install",
     "lint": "eslint . --ext .js,.jsx,.cjs,.mjs --fix"
   },
