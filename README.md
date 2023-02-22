@@ -14,13 +14,13 @@ cd wechat_offiaccount_chatGPT
 **打包镜像**
 
 ```bash
-docker build -t hyy/wechat_offiaccount_chatGPT .
+docker build -t hyy/wechat_offiaccount_chatgpt .
 ```
 
 **运行服务**
 
 ```bash
-docker run -d --name wechat_offiaccount_chatGPT -p 3000:3000 -v "$HOME/dockerdata/wechat_offiaccount_chatGPT/logs":/app/logs -e TOKEN="填入公众号后台的token，可通过npm run token生成" -e OPENAI_API_KEY="填入openai的key" hyy/wechat_offiaccount_chatGPT
+docker run -d --name wechat_offiaccount_chatgpt -p 3000:3000 -v "$HOME/dockerdata/wechat_offiaccount_chatGPT/logs":/app/logs -e TOKEN="填入公众号后台的token，可通过npm run token生成" -e OPENAI_API_KEY="填入openai的key" hyy/wechat_offiaccount_chatgpt
 ```
 
 ## 说明
