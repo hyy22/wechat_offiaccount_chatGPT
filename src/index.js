@@ -2,7 +2,7 @@ import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import Router from '@koa/router';
 import { handle } from './authHandle.js';
-import { handleMsg } from './handleMsg.js';
+import { handleWxPost } from './post.js';
 
 const PORT = 3000;
 const app = new Koa();
@@ -13,9 +13,7 @@ app.use(bodyParser({
 router.get('/wx', async ctx => {
 	ctx.body = handle(ctx.query);
 });
-router.post('/wx', async ctx => {
-	ctx.body = await handleMsg(ctx.request.body);
-});
+router.post('/wx', ctx => handleWxPost(ctx));
 app.use(router.routes());
 app.listen(PORT, () => {
 	console.log(`server running at port ${PORT}`);
