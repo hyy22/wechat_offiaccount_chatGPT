@@ -51,12 +51,14 @@ export async function handleWxPost(ctx) {
 		let resp;
 		try {
 			// 调用ChatGPT服务
-			answerObject.text = await retriedFn();
+			resp = await retriedFn();
+			answerObject.text = resp;
 			answerObject.status = 'SUCCESS';
 		} catch (e) {
-			answerObject.text = e.message;
+			resp = e.message;
+			answerObject.text = resp;
 			answerObject.status = 'FAIL';
-			logger.error(e.message);
+			logger.error(resp);
 		}
 		// 定时清除缓存
 		answerObject.timer = setTimeout(() => {
