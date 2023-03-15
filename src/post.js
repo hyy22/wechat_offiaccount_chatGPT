@@ -14,6 +14,7 @@ import { retry } from './helper.js';
 
 // 缓存问题状态
 const promptCache = new Map();
+const SUBSCRIBE_REPLY = '感谢关注～'; // 新关注文案
 const TIMEOUT_REPLY = `sorry~发了个呆，请在${Math.ceil(config.cacheSession / 60000)}分钟内按原问题再问一次吧～`; // 超时文案
 const WX_MAX_RETRY = 2; // 微信重试次数
 
@@ -34,6 +35,11 @@ export async function handleWxPost(ctx) {
 	const data = ctx.request.body;
 	// 解析消息
 	const { xml: msg } = await parseMsg(data);
+	// 处理不同消息类型
+	if (msg.MsgType === 'event' && msg.Event === 'subscribe') {
+		// 关注事件
+		return reply(ctx, msg, SUBSCRIBE_REPLY);
+	} else if (msg.MsgType !== 'text') return reply(ctx, msg, 'success');
 	// 打个日志
 	logger.info('received msg: ', JSON.stringify(msg));
 	const cacheKey = `${msg.FromUserName}_${msg.Content}`;
