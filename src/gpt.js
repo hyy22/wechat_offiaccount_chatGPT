@@ -20,7 +20,8 @@ function handlePreset(msg) {
 		const regExp = new RegExp(k, 'i');
 		const match = regExp.exec(msg.Content);
 		if (match) {
-			let result = typeof preset[k] === 'function' ? preset[k].apply(null, match.slice(1)) : preset[k];
+			// 部分情况可能需要接收msg，把msg作为第一个参数
+			let result = typeof preset[k] === 'function' ? preset[k].apply(null, [msg].concat(match.slice(1))) : preset[k];
 			throw new Error(result);
 		}
 	}
